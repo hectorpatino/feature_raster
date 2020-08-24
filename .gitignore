@@ -144,3 +144,6 @@ cython_debug/
 
 .idea/
 old_git/
+old_git/*
+old_git/.
+/data/generated/
