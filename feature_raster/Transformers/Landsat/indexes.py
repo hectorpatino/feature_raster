@@ -525,7 +525,7 @@ def logratio(red_band, nir_band):
 
 @require_pd_series
 def mcrig(blue_band, green_band, nir_band):
-    """ LOGRATIO
+    """ mCRIG
     Parameters
     ----------
     blue_band: pd.Series indicating the name of the blue band in the dataframe
@@ -1076,7 +1076,7 @@ def sqrt_nir_ir(red_band, nir_band):
     for more info please visit:
     # https://www.indexdatabase.de/db/si-single.php?rsindex_id=200=&sensor_id=168
     """
-    return np.sqrt(return_division(nir_band, red_band))
+    return np.sqrt(np.absolute(return_division(nir_band, red_band)))
 
 
 @require_pd_series
