@@ -1,4 +1,3 @@
-from sklearn.base import BaseEstimator, TransformerMixin
 from .LandsatCommonTransformer import LandsatGeneralTransformer
 
 from feature_raster.Sensors.Landsat import Landsat8

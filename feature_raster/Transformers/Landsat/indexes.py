@@ -519,7 +519,8 @@ def logratio(red_band, nir_band):
     for more info please visit:
     # https://www.indexdatabase.de/db/si-single.php?rsindex_id=243=&sensor_id=168
     """
-    return np.log10(return_division(nir_band, red_band))
+    division = return_division(nir_band, red_band)
+    return np.where(division == 0., 0., np.log10(return_division(nir_band, red_band)))
 
 
 @require_pd_series
