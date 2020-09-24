@@ -3,7 +3,6 @@ import numpy as np
 
 from feature_raster.exceptions.some_exceptions import InvalidImage
 from feature_raster.project_enums.LandsatEnums import LandsatEnums
-from feature_raster.Sensors.Landsat import Landsat5
 from feature_raster.Sensors.Landsat import Landsat8
 from feature_raster.Transformers.Landsat import Landsat8Transformer
 from tests.paths import small_2018_dataset

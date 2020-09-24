@@ -18,6 +18,7 @@ class GeneralSensorInstancesTest(unittest.TestCase):
         """If dataframe attribute in Landsat8 then raise type error"""
         some_random_variable = []
         another_random_variable = ""
+        # TODO dataframe MUST BE of the same dimensions
         with self.assertRaises(TypeError):
             self.landsat8.dataframe = some_random_variable
             self.landsat8.dataframe = another_random_variable

@@ -1,0 +1,22 @@
+[tool.poetry]
+name = "feature_raster"
+version = "0.1.0"
+description = "This"
+authors = ["Hector Patiño <hectorpatino24@gmail.com>"]
+license = "MIT"
+
+[tool.poetry.dependencies]
+python = "^3.8"
+ogr = "^0.15.0"
+gdal = {path = "wheels/GDAL-3.1.3-cp38-cp38-win_amd64.whl"}
+fiona = {path = "wheels/Fiona-1.8.17-cp38-cp38-win_amd64.whl"}
+pandas = "^1.1.2"
+geopandas = "^0.8.1"
+rasterio = {path = "wheels/rasterio-1.1.5-cp38-cp38-win_amd64.whl"}
+sklearn = "^0.0"
+
+[tool.poetry.dev-dependencies]
+
+[build-system]
+requires = ["poetry>=0.12"]
+build-backend = "poetry.masonry.api"
