@@ -12,8 +12,12 @@ python:
 
 install:
     - pip install poetry
+    - pip install ogr
+    - pip install gdal
+    - pip install fiona
+    - pip install rasterio
+    - pip install sklearn
     - poetry install
-
 script:
     - bash scripts/test.sh
 
