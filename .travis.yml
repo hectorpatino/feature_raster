@@ -10,6 +10,12 @@ python:
     - "3.8"
     - "nightly"
 
+before_install:
+    - sudo add-apt-repository ppa:ubuntugis/ppa
+    - sudo apt-get update
+    - sudo apt-get install gdal-bin
+    - sudo apt-get install libgdal-dev
+
 install:
     - pip install ogr
     - pip install gdal
