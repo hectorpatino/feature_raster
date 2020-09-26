@@ -1,24 +1,19 @@
+dist: xenial
+
 language: python
+
+cache: pip
+
 python:
-- '3.6'
-- '3.7'
-- '3.8'
-- nightly
+    - "3.6"
+    - "3.7"
+    - "3.8"
+    - "nightly"
+
 install:
-- if [[ "$TRAVIS_PYTHON_VERSION" == "2.7" ]]; then wget https://repo.continuum.io/miniconda/Miniconda2-latest-Linux-x86_64.sh
-  -O miniconda.sh; else wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh
-  -O miniconda.sh; fi
-- bash miniconda.sh -b -p $HOME/miniconda
-- source "$HOME/miniconda/etc/profile.d/conda.sh"
-- hash -r
-- conda config --set always_yes yes --set changeps1 no
-- conda update -q conda
-- conda info -a
-- conda create -q -n test-environment python=$TRAVIS_PYTHON_VERSION pandas geopandas
-  rasterio numpy
-- conda activate test-environment
-- python setup.py install
-script: python -m unittest
-env:
-  global:
-    secure: Qp5AmUZnnQPOK3jz8tvgG6mLZiqTe/EtRhSRhYDQ5BrJy+XXvb1DrsIYhHOeS7JIUTHyD6emJpzQwuvexG7j3FJNEoIgiA5mEWQgW0R1cJgo4ZQzcOX2PzpvGXG0qqlX87rqq/yvp1l61nG7EC9S941fLjNjtsrv6hqsM5TpVbm5gSBeJUjYqcpvkKhCNTEfoiRuqA1H78mVLeuYBcGB/q0Xnz0d+BTTIu76JrEawbeVtmuPcvJGKr/hcwwFo90hNVYUsEw+dV7VmaHBlQD440eZGcYnxOv+oLqEfE18rLlohdmT/tlFf6mob1V1Ru5NK3QLQ2RnnrQE8YQnmXRn21+nFYEL7wjaVVTBWyHBs/PcNswC2RU/PvRo3WVvgjwdD9pzoIP5sW6Elrzcdl6KHyC820QvMYLCEeeZ6GrwYm8TWXkRjunDhInR4cq9OcYJA6KiCQ/oCPSNq+wFOhj0DO3GBGMCLkdy4r26K+gWltVfOA9d5laTMSTuTaVJnnysguBp4fJkB2gu7Iucs72u76igtO2Xqs+KlG5kT+1KKg4Wl3oUPxCnxz/18PaF/QdoLsm4vAezJnCvsbVkb7a7Ac0m6BhZ78JpSnuHULyD7h7bHSGWCeNnbQP0rPEGCzEKHeu2kU+TbAJ+JjfwlM4xybjXUSFN0qreC07eOw2lbaY=
+    - pip install poetry
+    - poetry install
+
+script:
+    - bash scripts/test.sh
+
