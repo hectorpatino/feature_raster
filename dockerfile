@@ -11,4 +11,4 @@ COPY feature_raster/ .
 COPY tests/ .
 COPY APP.py .
 
-CMD ["python", "app.py"]
+CMD ["python", "APP.py"]
