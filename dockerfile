@@ -1,7 +1,5 @@
 FROM osgeo/gdal
 
-WORKDIR /code
-
 COPY requirements-dev.txt .
 
 RUN apt-get update &&\
