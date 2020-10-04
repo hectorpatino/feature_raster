@@ -6,5 +6,6 @@ services:
   - docker
 
 script:
-    - docker run feature_raster_docker
+  - docker build -t feature_raster_docker
+  - docker run feature_raster_docker
 
