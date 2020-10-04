@@ -5,7 +5,9 @@ language: python
 services:
   - docker
 
-script:
+before_install:
   - docker build -t feature_raster_docker
+
+script:
   - docker run feature_raster_docker
 
