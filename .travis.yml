@@ -2,82 +2,9 @@ dist: xenial
 
 language: python
 
-env:
-  global:
-    - PIP_WHEEL_DIR=$HOME/.cache/pip/wheels
-    - PIP_FIND_LINKS=file://$HOME/.cache/pip/wheels
-    - GDALINST=$HOME/gdalinstall
-    - GDALBUILD=$HOME/gdalbuild
-    - PROJINST=$HOME/gdalinstall
-    - PROJBUILD=$HOME/projbuild
-
-jobs:
-  include:
-    - python: "3.6"
-      env:
-        GDALVERSION="2.3.3"
-        PROJVERSION="4.9.3"
-    - python: "3.6"
-      env:
-        GDALVERSION="2.4.4"
-        PROJVERSION="4.9.3"
-    - python: "3.7"
-      env:
-        GDALVERSION="2.4.4"
-        PROJVERSION="4.9.3"
-    - python: "3.8"
-      env:
-        GDALVERSION="2.4.4"
-        PROJVERSION="4.9.3"
-    - python: "3.6"
-      env:
-        GDALVERSION="3.0.4"
-        PROJVERSION="6.2.1"
-    - python: "3.7"
-      env:
-        GDALVERSION="3.0.4"
-        PROJVERSION="6.2.1"
-    - python: "3.8"
-      env:
-        GDALVERSION="3.0.4"
-        PROJVERSION="6.2.1"
-    - python: "3.8"
-      env:
-        GDALVERSION="master"
-        PROJVERSION="6.2.1"
-  allow_failures:
-    - env:
-        GDALVERSION="master"
-        PROJVERSION="6.2.1"
-
-addons:
-  apt:
-    packages:
-    - libhdf5-serial-dev
-    - libgdal-dev
-    - libatlas-dev
-    - libatlas-base-dev
-    - gfortran
-
-before_install:
-  - python -m pip install -U pip
-  - python -m pip install wheel
-  - export PATH=$GDALINST/gdal-$GDALVERSION/bin:$PATH
-  - export LD_LIBRARY_PATH=$GDALINST/gdal-$GDALVERSION/lib:$LD_LIBRARY_PATH
-  - . ./scripts/travis_proj_install.sh
-  - travis_wait 20 . ./scripts/travis_gdal_install.sh
-  - export GDAL_DATA=$GDALINST/gdal-$GDALVERSION/share/gdal
-  - export PROJ_LIB=$GDALINST/gdal-$GDALVERSION/share/proj
-
-install:
-  - "python -m pip wheel -r requirements-dev.txt"
-  - "python -m pip install -r requirements-dev.txt"
-  - "GDAL_CONFIG=$GDALINST/gdal-$GDALVERSION/bin/gdal-config python -m pip install --no-deps --force-reinstall --no-use-pep517 -e ."
-  - "python -m pip install coveralls>=1.1"
-  - "rio --version"
-  - "rio --gdal-version"
-  - "python -m pip list"
+services:
+  - docker
 
 script:
-    - bash scripts/test.sh
+    - docker run feature_raster_docker
 

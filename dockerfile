@@ -9,6 +9,5 @@ RUN apt-get update &&\
 COPY data/ data/
 COPY feature_raster/ feature_raster/
 COPY tests/ tests/
-COPY APP.py .
 
-CMD ["python", "APP.py"]
+CMD python -m unittest
